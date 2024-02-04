@@ -1,5 +1,5 @@
 backend-springboot-app/.idea
 backend-springboot-app/.mvn
 backend-springboot-app/target
-frontend-angular-app/node_modules
+frontend-angular-app/node_modules/
 frontend-angular-app/.angular
