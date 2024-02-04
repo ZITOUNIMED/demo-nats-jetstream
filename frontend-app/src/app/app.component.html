@@ -1,0 +1,26 @@
+<div class="app-window">
+  <div class="app-header">
+    <div class="app-menue">
+      <ul>
+        <li><a routerLink="/inbox">Inbox</a></li>
+      </ul>
+    </div>
+    <div class="app-account">
+      <div *ngIf="(user$ | async) && (user$ | async)?.userId">
+        {{(user$ | async)?.userId}} - {{(user$ | async)?.name}}
+      </div>
+      <div>
+        <a routerLink="/login">Login</a>/<a [routerLink]="['/logout']">Logout</a>
+      </div>
+      <div *ngIf="desks.length">
+        <span *ngFor="let desk of desks">
+          <span [ngClass]="{'selected': desk.isExisting}" (click)="selectOrUnselect(desk.id)">{{desk.name}}</span><br/>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="app-body">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

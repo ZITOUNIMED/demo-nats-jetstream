@@ -1,0 +1,36 @@
+<div [formGroup]="srForm">
+    <input type="text" formControlName="summary" />
+    <select formControlName="deskId">
+        <option *ngFor="let desk of desks" [value]="desk.id">{{desk.name}}</option>
+    </select>
+    <button type="button" (click)="createSr()">Create SR</button>
+</div>
+<div *ngIf="!inboxData || inboxData.length < 1">
+    No data to load
+</div>
+<div *ngIf="inboxData">
+    <table>
+        <thead>
+            <tr>
+                <th>EntityType</th>
+                <th>CreatorUserName</th>
+                <th>SrSummary</th>
+                <th>DeskName</th>
+                <th>Status</th>
+                <th>CreationDate</th>
+                <th>LastUpdate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of inboxData">
+                <td>{{item.entityType}}</td>
+                <td>{{item.creatorUserName}}</td>
+                <td>{{item.srSummary}}</td>
+                <td>{{item.deskName}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.creationDate|date: 'short'}}</td>
+                <td>{{item.lastUpdate|date: 'short'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
